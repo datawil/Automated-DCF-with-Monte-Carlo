@@ -1,17 +1,18 @@
+import dash
+from dash import Dash, dcc, html, Input, Output
+import plotly.express as px
+import numpy as np
+from numpy_financial import npv
+import yfinance as yf
+
 # Step 1 Data Collection
 
-import yfinance as yf
 ticker = yf.Ticker("AAPL")
 cash_flows = ticker.cashflow  # Get 5 years of cash flows
 
-
 # Step 2 Build DCF Logic
 
-import numpy as np
-from numpy_financial import npv
-
-# Sample cash flow data
-fcf = np.array([100, 110, 120])
+fcf = np.array([100, 110, 120])  # Sample cash flow data
 
 # Define your DCF function
 
@@ -32,20 +33,35 @@ def monte_carlo_dcf(fcf_mean, fcf_std, iterations=1000):
 
 # Step 3 Dash Dashboard
 
-import dash
-from dash import Dash, dcc, html, Input, Output
-import plotly.express as px
+# Initialize Dash app
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, requests_pathname_prefix="/dash/")  # Note the prefix
+
+# Layout
+
 app.layout = html.Div([
-    dcc.Slider(id="wacc-slider", min=0.05, max=0.15, step=0.01, value=0.08),
+    dcc.Slider(
+        id="wacc-slider",
+        min=0.05,
+        max=0.15,
+        step=0.01,
+        value=0.08,
+        marks={i/100: f"{i}%" for i in range(5, 16)}
+    ),
     dcc.Graph(id="dcf-plot")
 ])
 
-@app.callback(Output("dcf-plot", "figure"), Input("wacc-slider", "value"))
+# Callback
+
+@app.callback(
+    Output("dcf-plot", "figure"),
+    Input("wacc-slider", "value")
+)
 def update_graph(wacc):
     valuation = dcf_valuation(fcf, wacc)
-    return px.bar(x=["DCF Value"], y=[valuation], title=f"Enterprise Value: ${valuation:,.2f}")
-
-app.run(mode='inline')
-
+    return px.bar(
+        x=["DCF Value"],
+        y=[valuation],
+        title=f"Enterprise Value: ${valuation:,.2f}",
+        labels={"x": "", "y": "Value ($)"}
+    )
