@@ -1,13 +1,13 @@
-# Core with exact versions
+# Core
 fastapi==0.95.2
 uvicorn==0.22.0
-setuptools==68.2.2
-wheel==0.41.2
+setuptools==59.8.0
+wheel==0.37.1
 
-# Data/Finance
+# Data
 yfinance==0.2.18
-numpy==1.24.0
-pandas==2.0.0
+numpy==1.21.6
+pandas==1.5.3
 numpy-financial==1.0.0
 
 # Caching
