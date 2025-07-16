@@ -1,7 +1,8 @@
 # Core with exact versions
 fastapi==0.95.2
 uvicorn==0.22.0
-setuptools==68.2.2  # Explicitly add setuptools
+setuptools==68.2.2
+wheel==0.41.2
 
 # Data/Finance
 yfinance==0.2.18
