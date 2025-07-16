@@ -1,17 +1,16 @@
-# Core Dependencies
+# Core with exact versions
 fastapi==0.95.2
-uvicorn==0.22.0  # ASGI server
-python-multipart==0.0.6  # Form parsing
+uvicorn==0.22.0
+setuptools==68.2.2  # Explicitly add setuptools
 
-# Data & Finance
+# Data/Finance
 yfinance==0.2.18
 numpy==1.24.0
 pandas==2.0.0
-numpy-financial==1.0.0  # For NPV/IRR calculations
+numpy-financial==1.0.0
 
 # Caching
-fastapi-cache2==0.2.0  # More maintained than v1
-aioredis==2.0.1  # Optional for Redis caching
+fastapi-cache2==0.2.0
 
 # Dash Frontend
 dash==2.9.0
