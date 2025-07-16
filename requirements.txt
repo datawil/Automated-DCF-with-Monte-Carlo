@@ -6,7 +6,7 @@ wheel==0.37.1
 
 # Data
 yfinance==0.2.18
-numpy==1.21.6
+numpy==1.24.0
 pandas==1.5.3
 numpy-financial==1.0.0
 
