@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi_cache.decorator import cache
-from models.dcf import DCFModel
+from models.dcf_model import DCFModel
 from models.monte_carlo import MonteCarlo
 from cache_config import setup_caching
 import yfinance as yf
