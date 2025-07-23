@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from models.dcf import DCFModel
+from models.dcf_model import DCFModel
 
 class TestDCFModel:
     def test_basic_valuation(self):
