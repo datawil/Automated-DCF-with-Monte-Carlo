@@ -1,5 +1,5 @@
 import numpy as np
-from .dcf import DCFModel
+from models.dcf_model import DCFModel
 
 class MonteCarlo:
     @staticmethod
