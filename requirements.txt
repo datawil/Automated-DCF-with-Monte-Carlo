@@ -1,12 +1,11 @@
-# Core with exact versions
+# Core
 fastapi==0.95.2
 uvicorn==0.22.0
-setuptools==68.2.2  # Explicitly add setuptools
 
-# Data/Finance
+# Data
 yfinance==0.2.18
+pandas==1.5.3
 numpy==1.24.0
-pandas==2.0.0
 numpy-financial==1.0.0
 
 # Caching
